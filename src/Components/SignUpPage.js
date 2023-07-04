@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import axios from "axios";
+import Header from "./Header";
+import '../styles/signupPage.css'
 
 
 export default function SignUpPage() {
@@ -42,6 +44,8 @@ export default function SignUpPage() {
 
 
     return (
+        <>
+         <Header />
         <section className={'signup_section'}>
             <div className="container">
                 <div className="signup_main_wrapper">
@@ -59,6 +63,7 @@ export default function SignUpPage() {
             </div>
 
         </section>
+        </>
     )
 }
 

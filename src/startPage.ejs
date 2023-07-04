@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home</title>
+    <link rel="stylesheet" href="./public/styles.css">
+
+</head>
+<body>
+<div class="flex_wrapper">
+
+   <%- include ('./components/header') %>
+   <section class="section_content">
+
+    <div class="container">
+        <div class="main_wrapper_start">
+            <div class="main_title">
+                <i class="fa-solid fa-user"></i>
+                <h3 class="matrix_title">Matrix Master Community</h3>
+            </div>
+            <div>
+                <a class="question_btn" href="/questionPage">Add Question</a>
+            </div>
+
+            <div class="posts_wrapper">
+                <% for (let i = 0; i < posts.length;i++) { %>
+
+
+
+
+                        <div class="allPosts">
+
+                            <div class="title_desc">
+                                <h3 class="post_title"><%= posts[i].title %></h3>
+                                <p class="post_desc"><%= posts[i].desc.slice(0, 50) %></p>
+                            </div>
+                            <h4 class="date"><%= posts[i].creat_at %></h4>
+
+                            <p class="addedBy">Added by : <%= posts[i].owner.userName %> </p>
+
+                            <% if(posts[i].owner._id.toString() === userId.toString()) { %>
+                                <div class="button_fullPage">
+                                    <div class="edit-delete-btn">
+
+                                        <a href="/edit_page/<%= posts[i]._id %>">
+                                            <button class="edit_btn">Edit</button>
+                                        </a>
+
+                                        <form action="/delete/<%= posts[i]._id %>">
+                                            <button class="edit_btn">Delete</button>
+                                        </form>
+
+                                    </div>
+                                </div>
+
+
+
+                            <% } %>
+                                    <a class="see_btn" href="/fullPage/<%= posts[i]._id %>">See more </a>
+                               </div>
+
+
+
+
+                <% } %>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+
+   <%- include ('./components/footer') %>
+</div>
+</body>
+</html>

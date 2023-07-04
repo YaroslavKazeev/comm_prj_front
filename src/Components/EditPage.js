@@ -1,6 +1,11 @@
 import React from 'react';
 
 const EditPost = ({ post }) => {
+  // Add a null check for the post object
+  if (!post) {
+    return null; // or return some default content if desired
+  }
+
   return (
     <div className="question_wrapper editPost">
       <div className="edit_wrapper">

@@ -4,6 +4,7 @@ import axios from "axios";
 import './Header'
 import Header from "./Header";
 import '../styles/startPage.css'
+import {Link} from "react-router-dom";
 const StartPage = () => {
     const [posts, setPosts] = useState([])
 
@@ -32,6 +33,8 @@ const StartPage = () => {
                             <div className="poast_owner post_time">
                                 <p>{post.owner.userName}</p>
                                 <p>{post.creat_at}</p>
+                                <Link to={`/fullPage/${post._id}`}>See more</Link>
+
                             </div>
                         </div>
                     )}

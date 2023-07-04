@@ -1,6 +1,5 @@
 import "./App.css";
 import axios from "axios";
-import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import EditPage from './Components/EditPage';
 import FullPage from './Components/FullPage';

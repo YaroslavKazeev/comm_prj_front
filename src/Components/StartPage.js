@@ -1,47 +1,45 @@
 import React from 'react';
+import {useEffect, useState} from "react";
+import axios from "axios";
 
-const StartPage = ({ posts, userId }) => {
-  return (
-    <div className="container">
-<p>Hello World</p>
-    </div>
-  );
+const StartPage = () => {
+    const [posts, setPosts] = useState([])
+
+    useEffect(() => {
+        axios.get(`http://localhost:5000/`)
+            .then(result => {
+                console.log(result)
+
+                setPosts(result.data.allPosts)
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [])
+
+    return (
+        <section className={'posts_section'}>
+            <div className="container">
+                <div className="posts_main_wrapper">
+                    {posts && posts.map(post =>
+                        <div key={post._id} className="post_wrapper">
+                            <h3 className={'post_title'}>Title: {post.title}</h3>
+                            <p className={'posts_desc'}>Desc: {post.desc}</p>
+                            <div className="poast_owner post_time">
+                                <p>{post.owner.userName}</p>
+                                <p>{post.creat_at}</p>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            </div>
+        </section>
+
+
+    )
+
+
 };
 
 export default StartPage;
 
-/* <div className="main_wrapper_start">
-<div className="main_title">
-  <i className="fa-solid fa-user"></i>
-  <h3 className="matrix_title">Matrix Master Community</h3>
-</div>
-<div>
-  <a className="question_btn" href="/questionPage">Add Question</a>
-</div>
-
-<div className="posts_wrapper">
-  {posts.map((post, i) => (
-    <div className="allPosts" key={i}>
-      <div className="title_desc">
-        <h3 className="post_title">{post.title}</h3>
-        <p className="post_desc">{post.desc.slice(0, 50)}</p>
-      </div>
-      <h4 className="date">{post.createdAt}</h4>
-      <p className="addedBy">Added by: {post.owner.userName}</p>
-      {post.owner._id.toString() === userId.toString() && (
-        <div className="button_fullPage">
-          <div className="edit-delete-btn">
-            <a href={`/edit_page/${post._id}`}>
-              <button className="edit_btn">Edit</button>
-            </a>
-            <form action={`/delete/${post._id}`}>
-              <button className="edit_btn">Delete</button>
-            </form>
-          </div>
-        </div>
-      )}
-      <a className="see_btn" href={`/fullPage/${post._id}`}>See more</a>
-    </div>
-  ))}
-</div>
-</div> */

@@ -1,13 +1,15 @@
 import React, {useEffect, useState} from 'react'
+import  {useNavigate} from "react-router-dom";
 import axios from "axios";
 import Header from "./Header";
 import '../styles/signupPage.css'
 
 
 export default function SignUpPage() {
-    const [userName, setUserName] = useState();
-    const [userEmail, setUserEmail] = useState();
-    const [userPassword, setUserPassword] = useState();
+    const navigate = useNavigate();
+    const [userName, setUserName] = useState('');
+    const [userEmail, setUserEmail] = useState('');
+    const [userPassword, setUserPassword] = useState('');
     const [err, setErr] = useState('')
 
 
@@ -28,14 +30,21 @@ export default function SignUpPage() {
         setErr('')
         if (userName === '' || userEmail === '' || userPassword === ''){
             setErr("Email and password are required")
-        } else{
-            axios.post(`http://localhost:5000/signup`,{
+        }else if (userName.length<2 || userName.length>20 ){
+            setErr("User Name min length 2 max length 20")
+        }else if(userPassword.length<6 || userPassword.length>20){
+            setErr("Password min length 6 max length 20")
+
+        }
+        else{
+            axios.post(`/signUp`,{
                 userName: userName,
                 email: userEmail,
                 password: userPassword
             })
-
-
+                .then(
+                        navigate(`/login`)
+                )
                 .catch(err =>{
                     console.log(err)
                 })
@@ -47,6 +56,7 @@ export default function SignUpPage() {
         <>
          <Header />
         <section className={'signup_section'}>
+
             <div className="container">
                 <div className="signup_main_wrapper">
                     <form onSubmit={signUpSubmit} className="signup_form">

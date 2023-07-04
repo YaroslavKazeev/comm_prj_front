@@ -1,14 +1,18 @@
 import React from 'react';
 
 const FullPage = ({ post, userId, comments }) => {
-  return (
-    <div className="container">
-      <div className="main_wrapper">
-        <div className="addedComment">
-          <div className="postTitle">{post.title}</div>
-          <div className="postDesc">{post.desc}</div>
-        </div>
-
+    // Add a conditional check for the 'post' object
+    if (!post) {
+      return null; // or you can render a placeholder or loading state
+    }
+  
+    return (
+      <div className="container">
+        <div className="main_wrapper">
+          <div className="addedComment">
+            {post.title && <div className="postTitle">{post.title}</div>}
+            {post.desc && <div className="postDesc">{post.desc}</div>}
+          </div>
         {post.owner._id.toString() === userId.toString() && (
           <div className="postModify">
             <a href={`/edit_page/${post._id}`}>
@@ -57,4 +61,6 @@ const FullPage = ({ post, userId, comments }) => {
 };
 
 export default FullPage;
+
+
 

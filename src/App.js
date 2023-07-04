@@ -1,25 +1,31 @@
-import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import editPage from './components/editPage';
-import fullPage from './components/fullPage';
-import logInPage from './components/logInPage';
-import questionPage from './components/questionPage';
-import signupPage from './components/signupPage';
-import startPage from './components/startPage';
+import "./App.css";
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import EditPage from './Components/EditPage';
+import FullPage from './Components/FullPage';
+import LogInPage from './Components/LogInPage';
+import QuestionPage from './Components/QuestionPage';
+import SignUpPage from './Components/SignUpPage';
+import StartPage from "./Components/StartPage";
 
 function App() {
   return (
-    <div>
-      <Routes>
-        <Route path="/edit_page/:id" element={<editPage />} />
-        <Route path="/fullPage/:id" element={<fullPage />} />
-        <Route path="/login" element={<logInPage />} />
-        <Route path="/questionPage" element={<questionPage />} />
-        <Route path="/signup" element={<signupPage />} />
-        <Route path="/" element={<startPage />} />
-      </Routes>
-    </div>
+    <BrowserRouter>
+      <div>
+        <Routes>
+          <Route path="/" element={<StartPage />} />
+          <Route path="/edit_page/:id" element={<EditPage />} />
+          <Route path="/fullPage/:id" element={<FullPage />} />
+          <Route path="/login" element={<LogInPage />} />
+          <Route path="/questionPage" element={<QuestionPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
 export default App;
+
+

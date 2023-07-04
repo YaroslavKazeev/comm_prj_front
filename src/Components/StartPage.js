@@ -1,7 +1,9 @@
 import React from 'react';
 import {useEffect, useState} from "react";
 import axios from "axios";
-
+import './Header'
+import Header from "./Header";
+import '../styles/startPage.css'
 const StartPage = () => {
     const [posts, setPosts] = useState([])
 
@@ -18,7 +20,9 @@ const StartPage = () => {
     }, [])
 
     return (
-        <section className={'posts_section'}>
+        <>
+            <Header />
+         <section className={'posts_section'}>
             <div className="container">
                 <div className="posts_main_wrapper">
                     {posts && posts.map(post =>
@@ -33,7 +37,8 @@ const StartPage = () => {
                     )}
                 </div>
             </div>
-        </section>
+         </section>
+        </>
 
 
     )

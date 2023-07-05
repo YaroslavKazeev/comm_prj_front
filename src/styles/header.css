@@ -20,6 +20,9 @@
 .logo_img {
     max-width: 60px;
 }
+.logo_header {
+    width: 60px;
+}
 
 .header_auth {
     display: flex;
@@ -29,13 +32,17 @@
 
 .auth_link {
     transition: transform 0.6s ease;
+    color: black;
 }
 
+
+.auth_link:visited{
+    color: black;
+}
 .auth_link:hover {
     color: rgba(192, 107, 0, 0.75);
     transform: scale(1.1);
 }
-
 .full {
     font-size: 30px;
 }

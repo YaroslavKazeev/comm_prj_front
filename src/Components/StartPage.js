@@ -5,6 +5,7 @@ import './Header'
 import Header from "./Header";
 import '../styles/startPage.css'
 import {Link} from "react-router-dom";
+import Footer from "./Footer";
 const StartPage = () => {
     const [posts, setPosts] = useState([])
 
@@ -41,6 +42,7 @@ const StartPage = () => {
                 </div>
             </div>
          </section>
+        
         </>
 
 

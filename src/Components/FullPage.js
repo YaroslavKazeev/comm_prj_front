@@ -39,6 +39,8 @@ const FullPage = () => {
                     <p>Time: {time}</p>
                 </div>
                 <Link to={`/edit_page/${id}`}>Edit</Link>
+                <button class="full_edit_btn">Delete</button>
+                <p>Comments : </p>
             </div>
         </section>
         </>

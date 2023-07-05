@@ -17,17 +17,18 @@ const FullPage = () => {
         axios.get(`http://localhost:5000/fullPage/${id}`)
             .then(result =>{
                 let res= result.data.posts
+                console.log(res)
                 setTitle(res.title)
                 setDesc(res.desc)
                 setTime(res.creat_at)
-
             })
             .catch(err =>{
                 console.log(err)
             })
     },[id])
+    console.log(id);
     return(
-        <>
+        <>            
         <Header />
         <section className={'post_section'}>
             <div className="container">
@@ -36,10 +37,8 @@ const FullPage = () => {
                     <hr/>
                     <p>Desc : {desc}</p>
                     <p>Time: {time}</p>
-
-
-
                 </div>
+                <Link to={`/edit_page/${id}`}>Edit</Link>
             </div>
         </section>
         </>

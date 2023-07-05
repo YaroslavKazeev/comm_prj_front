@@ -3,6 +3,7 @@ import axios from "axios";
 import { useParams, useNavigate, Link } from "react-router-dom";
 import Header from "./Header";
 import '../styles/fullPage.css'
+import DeleteComment from "./DeleteComment";
 
 
 const FullPage = () => {
@@ -73,9 +74,9 @@ const FullPage = () => {
         <section className={'post_section'}>
             <div className="container">
                 <div className="post_wrapper">
-                    <h3>Title :{title}</h3>
+                    <h3 className={'post_title'}>Title :{title}</h3>
                     <hr/>
-                    <p>Desc : {desc}</p>
+                    <p className={'post_desc'}>Desc : {desc}</p>
                     <p>Time: {time}</p>
                 </div>
                 <Link to={`/edit_page/${id}`}>Edit</Link>
@@ -102,6 +103,7 @@ const FullPage = () => {
 
                         <p>{comment.owner.userName}</p>
                         <p>{comment.creat_at}</p>
+                        <DeleteComment id={comment._id} />
                         <hr/>
 
 

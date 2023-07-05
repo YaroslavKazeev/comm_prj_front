@@ -29,14 +29,17 @@ const StartPage = () => {
                 <div className="posts_main_wrapper">
                     {posts && posts.map(post =>
                         <div key={post._id} className="post_wrapper">
+                            <div className="post_owner post_time">
+                                <h4>{post.owner.userName}</h4>
+                                <p>{post.creat_at}</p>
+                            </div>
                             <h3 className={'post_title'}>Title: {post.title}</h3>
                             <p className={'posts_desc'}>Desc: {post.desc}</p>
-                            <div className="poast_owner post_time">
-                                <p>{post.owner.userName}</p>
-                                <p>{post.creat_at}</p>
+
+
                                 <Link to={`/fullPage/${post._id}`}>See more</Link>
 
-                            </div>
+
                         </div>
                     )}
                 </div>

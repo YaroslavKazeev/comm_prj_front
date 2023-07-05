@@ -12,6 +12,7 @@ const FullPage = () => {
     const [time, setTime] = useState([])
     const [newComment, setNewComment] = useState('');
     const [err, setErr] = useState('');
+    const [comments,setComments]= useState([])
     const userId = localStorage.getItem("userId")
     const userName = localStorage.getItem('userName')
     console.log(userName)
@@ -24,11 +25,16 @@ const FullPage = () => {
             .then(result =>{
 
 
+
                 let res= result.data.posts
+                let comments = result.data.comments
+
+
 
                 setTitle(res.title)
                 setDesc(res.desc)
                 setTime(res.creat_at)
+                setComments(comments)
             })
             .catch(err =>{
                 console.log(err)
@@ -77,7 +83,7 @@ const FullPage = () => {
 
             </div>
         </section>
-        <section className={'comments_section'}>
+        <section className={'addComment_section'}>
             <div className="container">
                 <form  onSubmit={commentSubmit}>
                     <input name="txt" onChange={commentChange}></input>
@@ -88,6 +94,25 @@ const FullPage = () => {
                 </form>
             </div>
         </section>
+            <section>
+                <div className="container">
+                    {comments && comments.map(comment=>
+                    <div key={comment._id} className="comment_wrapper">
+                        <h3>{comment.comment}</h3>
+
+                        <p>{comment.owner.userName}</p>
+                        <p>{comment.creat_at}</p>
+                        <hr/>
+
+
+                    </div>
+
+                    )}
+
+
+
+                </div>
+            </section>
         </>
     )
 }

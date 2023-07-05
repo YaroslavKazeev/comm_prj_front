@@ -65,7 +65,9 @@ const LogInPage = () => {
           <div className="container">
               <div className="login_wrapper">
                   <form onSubmit={loginSubmit} className="login_form">
+                      <div className="signup_welkome"><h3>Welkome</h3></div>
                       <h2>Log In</h2>
+                      <div><i className="fa-regular fa-face-smile fa-2xl smile"></i></div>
                       <input type="email" name="email" placeholder="Email" onChange={userEmailChange}/>
                       <input type="password" name="password" placeholder="Password" onChange={userPasswordChange} autoComplete="off" />
                       < button onClick={loginSubmit} className="button">Login</button>

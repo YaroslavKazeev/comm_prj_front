@@ -60,7 +60,11 @@ export default function SignUpPage() {
             <div className="container">
                 <div className="signup_main_wrapper">
                     <form onSubmit={signUpSubmit} className="signup_form">
+                        <div className="signup_welkome"><h3>Welkome</h3></div>
                         <h2>Sign Up</h2>
+                        <div><i className="fa-regular fa-face-smile fa-2xl smile"></i></div>
+
+
                         <input type="text" name="userName" placeholder="Username" onChange={userNameChange}/>
                         <input type="email" name="email" placeholder="Email" onChange={userEmailChange}/>
                         <input type="password" name="password" placeholder="Password" onChange={userPasswordChange} autoComplete="off" />

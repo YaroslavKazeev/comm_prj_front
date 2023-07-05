@@ -37,7 +37,7 @@ export default function SignUpPage() {
 
         }
         else{
-            axios.post(`/signUp`,{
+            axios.post(`http://localhost:5000/signup`,{
                 userName: userName,
                 email: userEmail,
                 password: userPassword

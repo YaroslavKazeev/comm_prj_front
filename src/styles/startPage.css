@@ -1,17 +1,36 @@
 .posts_section{
     margin-top: 150px;
 }
-.posts_main_wrapper {
+.post_wrapper {
 
-    padding: 20px;
-    background-color: white;
-    margin: 50px auto 0 auto;
-    border-radius: 10px;
+   margin-top: 20px;
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    width: 30%;
-    border: 1px solid #000;
+    gap: 30px;
+    background-color: white;
+    border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    padding: 10px;
+}
+.post_title {
+
     transition: transform 0.6s ease;
+}
+.post_desc {
+    text-align: left;
+    font-size: 18px;
+}
+.split{
+    margin-top: 20px;
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+.post_owner {
+    align-self: flex-start;
+}
+.post_owner h4{
+    font-size: 16px;
+}
+.post_owner p {
+    font-size: 12px;
 }

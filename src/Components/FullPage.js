@@ -19,17 +19,18 @@ const FullPage = () => {
                 console.log(result)
 
                 let res= result.data.posts
+                console.log(res)
                 setTitle(res.title)
                 setDesc(res.desc)
                 setTime(res.creat_at)
-
             })
             .catch(err =>{
                 console.log(err)
             })
     },[id])
+    console.log(id);
     return(
-        <>
+        <>            
         <Header />
         <section className={'post_section'}>
             <div className="container">
@@ -38,10 +39,10 @@ const FullPage = () => {
                     <hr/>
                     <p>Desc : {desc}</p>
                     <p>Time: {time}</p>
-
-
-
                 </div>
+                <Link to={`/edit_page/${id}`}>Edit</Link>
+                <button class="full_edit_btn">Delete</button>
+                <p>Comments : </p>
             </div>
         </section>
         </>

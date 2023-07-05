@@ -16,6 +16,8 @@ const FullPage = () => {
     useEffect(() =>{
         axios.get(`http://localhost:5000/fullPage/${id}`)
             .then(result =>{
+                console.log(result)
+
                 let res= result.data.posts
                 setTitle(res.title)
                 setDesc(res.desc)

@@ -10,25 +10,63 @@ const FullPage = () => {
     const [desc, setDesc] = useState([])
     const [owner, setOwner]= useState([])
     const [time, setTime] = useState([])
+    const [newComment, setNewComment] = useState('');
+    const [err, setErr] = useState('');
+    const [comments,setComments]= useState([])
+    const userId = localStorage.getItem("userId")
+    const userName = localStorage.getItem('userName')
+    console.log(userName)
+
 
     let {id} = useParams();
 
     useEffect(() =>{
         axios.get(`http://localhost:5000/fullPage/${id}`)
             .then(result =>{
-                console.log(result)
+
+
 
                 let res= result.data.posts
-                console.log(res)
+                let comments = result.data.comments
+
+
+
                 setTitle(res.title)
                 setDesc(res.desc)
                 setTime(res.creat_at)
+                setComments(comments)
             })
             .catch(err =>{
                 console.log(err)
             })
     },[id])
-    console.log(id);
+
+
+    const commentChange = (e) =>{
+        setErr('')
+        setNewComment(e.target.value)
+    }
+    const commentSubmit = (e) =>{
+        e.preventDefault()
+        setErr('')
+        if (newComment === ''){
+            setErr("Field is required")
+        } else{
+            axios.post(`http://localhost:5000/addComment/${id}`,{
+                txt: newComment,
+                user: userId,
+                question: id,
+                userName : userName
+            })
+                .then(() =>{
+                    window.location.reload()
+                })
+                .catch(err =>{
+                    console.log(err)
+                })
+        }
+    }
+
     return(
         <>            
         <Header />
@@ -42,9 +80,39 @@ const FullPage = () => {
                 </div>
                 <Link to={`/edit_page/${id}`}>Edit</Link>
                 <button class="full_edit_btn">Delete</button>
-                <p>Comments : </p>
+
             </div>
         </section>
+        <section className={'addComment_section'}>
+            <div className="container">
+                <form  onSubmit={commentSubmit}>
+                    <input name="txt" onChange={commentChange}></input>
+                    <button className="submit" onClick={commentSubmit}>Comment</button>
+                    {
+                        err ? <h5 className="error">{err}</h5> : null
+                    }
+                </form>
+            </div>
+        </section>
+            <section>
+                <div className="container">
+                    {comments && comments.map(comment=>
+                    <div key={comment._id} className="comment_wrapper">
+                        <h3>{comment.comment}</h3>
+
+                        <p>{comment.owner.userName}</p>
+                        <p>{comment.creat_at}</p>
+                        <hr/>
+
+
+                    </div>
+
+                    )}
+
+
+
+                </div>
+            </section>
         </>
     )
 }

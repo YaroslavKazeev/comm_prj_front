@@ -69,10 +69,11 @@ export default function SignUpPage() {
                         <input type="email" name="email" placeholder="Email" onChange={userEmailChange}/>
                         <input type="password" name="password" placeholder="Password" onChange={userPasswordChange} autoComplete="off" />
                         < button onClick={signUpSubmit} className="button-login">Sign Up</button>
+                        {
+                            err ? <h5 className="error">{err}</h5> : null
+                        }
                     </form>
-                    {
-                        err ? <h5 className="error">{err}</h5> : null
-                    }
+
                 </div>
             </div>
 

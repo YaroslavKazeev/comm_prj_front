@@ -35,10 +35,12 @@ const LogInPage = () => {
                 password: userPassword
             })
                 .then(res => {
-                    console.log(res)
+
 
                     if(res.data){
-                       localStorage.setItem('userInfo', res.data.user);
+                       localStorage.setItem('userName', res.data.user.userName);
+                        localStorage.setItem('userEmail', res.data.user.email);
+                        localStorage.setItem('userId', res.data.user.id);
                        Cookie.set('userToken', res.data.token)
                        navigate('/')
                    }else {

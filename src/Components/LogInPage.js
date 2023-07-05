@@ -35,7 +35,7 @@ const LogInPage = () => {
                 password: userPassword
             })
                 .then(res => {
-                    console.log(res)
+
 
 
                     if(res.data){

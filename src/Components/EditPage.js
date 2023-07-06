@@ -9,7 +9,6 @@ const EditPage = () => {
     const navigate = useNavigate();
     const [title, setTitle]= useState([]);
     const [desc, setDesc] = useState([])
-    const [time, setTime] = useState([])
     const [err, setErr] = useState('')
 
     let {id} = useParams();
@@ -39,7 +38,7 @@ const EditPage = () => {
                 desc: desc
             })
                 .then(
-                        // navigate(`/`)
+                        navigate(`/fullPage/${id}`)
                 )
                 .catch(err =>{
                     console.log(err)
@@ -47,17 +46,12 @@ const EditPage = () => {
         }
     }
 
-
-
-
     useEffect(() =>{
         axios.get(`http://localhost:5000/edit_page/${id}`)
             .then(result =>{
                 let res= result.data.posts
                 setTitle(res.title)
                 setDesc(res.desc)
-                setTime(res.creat_at)
-
             })
             .catch(err =>{
                 console.log(err)

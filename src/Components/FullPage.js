@@ -127,10 +127,7 @@ const FullPage = () => {
 
 
                         </div>
-
                     )}
-
-
 
                 </div>
             </section>

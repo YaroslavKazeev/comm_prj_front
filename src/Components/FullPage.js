@@ -122,7 +122,12 @@ const FullPage = () => {
 
                             <p>{comment.owner.userName}</p>
                             <p>{comment.creat_at}</p>
-                            <DeleteComment id={comment._id} />
+
+                            {comment.owner=== userId ?
+                               <DeleteComment id={comment._id} />
+                            : null
+
+                            }
                             <hr/>
 
 

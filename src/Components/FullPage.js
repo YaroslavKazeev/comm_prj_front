@@ -6,6 +6,7 @@ import '../styles/fullPage.css'
 import DeleteComment from "./DeleteComment";
 
 
+
 const FullPage = () => {
     const [title, setTitle]= useState([]);
     const [desc, setDesc] = useState([])
@@ -16,6 +17,7 @@ const FullPage = () => {
     const [comments,setComments]= useState([])
     const userId = localStorage.getItem("userId")
     const userName = localStorage.getItem('userName')
+    const navigate = useNavigate();
     console.log(userName)
 
 
@@ -24,7 +26,7 @@ const FullPage = () => {
     useEffect(() =>{
         axios.get(`http://localhost:5000/fullPage/${id}`)
             .then(result =>{
-
+                console.log(result)
 
 
                 let res= result.data.posts
@@ -33,6 +35,7 @@ const FullPage = () => {
 
 
                 setTitle(res.title)
+                setOwner(res.owner)
                 setDesc(res.desc)
                 setTime(res.creat_at)
                 setComments(comments)
@@ -67,47 +70,63 @@ const FullPage = () => {
                 })
         }
     }
+    const deleteQuestion = () =>{
+
+
+        axios.post(`http://localhost:5000/delete_question/${id}`)
+            .then(result =>{
+                navigate(result.data)
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+    }
+
 
     return(
-        <>            
-        <Header />
-        <section className={'post_section'}>
-            <div className="container">
-                <div className="post_wrapper">
-                    <h3 className={'post_title'}>Title :{title}</h3>
-                    <hr/>
-                    <p className={'post_desc'}>Desc : {desc}</p>
-                    <p>Time: {time}</p>
-                </div>
-                <Link to={`/edit_page/${id}`}>Edit</Link>
-                <button className="full_edit_btn">Delete</button>
+        <>
+            <Header />
+            <section className={'post_section'}>
+                <div className="container">
+                    <div className="post_wrapper">
+                        <h3 className={'post_title'}>Title :{title}</h3>
+                        <hr/>
+                        <p className={'post_desc'}>Desc : {desc}</p>
+                        <p>Time: {time}</p>
+                    </div>
+                    {userId === owner ? (
+                        <>
+                            <Link to={`/edit_page/${id}`}>Edit</Link>
+                            <button onClick={deleteQuestion} className="button">Delete</button>
+                        </>
+                    ) : null}
 
-            </div>
-        </section>
-        <section className={'addComment_section'}>
-            <div className="container">
-                <form  onSubmit={commentSubmit}>
-                    <input name="txt" onChange={commentChange}></input>
-                    <button className="submit" onClick={commentSubmit}>Comment</button>
-                    {
-                        err ? <h5 className="error">{err}</h5> : null
-                    }
-                </form>
-            </div>
-        </section>
+                </div>
+            </section>
+            <section className={'addComment_section'}>
+                <div className="container">
+                    <form  onSubmit={commentSubmit}>
+                        <input name="txt" onChange={commentChange}></input>
+                        <button className="submit" onClick={commentSubmit}>Comment</button>
+                        {
+                            err ? <h5 className="error">{err}</h5> : null
+                        }
+                    </form>
+                </div>
+            </section>
             <section>
                 <div className="container">
                     {comments && comments.map(comment=>
-                    <div key={comment._id} className="comment_wrapper">
-                        <h3>{comment.comment}</h3>
+                        <div key={comment._id} className="comment_wrapper">
+                            <h3>{comment.comment}</h3>
 
-                        <p>{comment.owner.userName}</p>
-                        <p>{comment.creat_at}</p>
-                        <DeleteComment id={comment._id} />
-                        <hr/>
+                            <p>{comment.owner.userName}</p>
+                            <p>{comment.creat_at}</p>
+                            <DeleteComment id={comment._id} />
+                            <hr/>
 
 
-                    </div>
+                        </div>
 
                     )}
 

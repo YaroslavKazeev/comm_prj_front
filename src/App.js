@@ -6,6 +6,7 @@ import LogInPage from './Components/LogInPage';
 import QuestionPage from './Components/QuestionPage';
 import SignUpPage from './Components/SignUpPage';
 import StartPage from "./Components/StartPage";
+import {PrivateRoute, PublicRoutes} from "./config";
 
 function App() {
   return (
@@ -14,10 +15,10 @@ function App() {
         <Routes>
           <Route path="/" element={<StartPage />} />
           <Route path="/edit_page/:id" element={<EditPage />} />
-          <Route path="/fullPage/:id" element={<FullPage />} />
-          <Route path="/login" element={<LogInPage />} />
-          <Route path="/questionPage" element={<QuestionPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/fullPage/:id" element={<PrivateRoute><FullPage /></PrivateRoute>} />
+          <Route path="/login" element={<PublicRoutes> <LogInPage /> </PublicRoutes>}/>
+          <Route path="/questionPage" element={<PrivateRoute><QuestionPage /></PrivateRoute>} />
+          <Route path="/signup" element={<PublicRoutes><SignUpPage /></PublicRoutes>} />
         </Routes>
       </div>
     </BrowserRouter>

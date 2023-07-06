@@ -23,6 +23,13 @@
 .logo_header {
     width: 60px;
 }
+.logo_header{
+    color: black;
+
+}
+.logo_header:hover{
+    color: rgba(192, 107, 0, 0.75);
+}
 
 .header_auth {
     display: flex;

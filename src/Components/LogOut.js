@@ -15,7 +15,9 @@ export default function LogOut(){
                 localStorage.removeItem('userName');
                 localStorage.removeItem('userId');
                 localStorage.removeItem('userEmail');
+
                 navigate(result.data)
+                window.location.reload()
             })
             .catch(err =>{
                 console.log(err)

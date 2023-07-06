@@ -108,24 +108,27 @@ console.log(res)
           </form>
         </div>
       </section>
-      <section>
-        <div className="container">
-          {comments &&
-            comments.map((comment) => (
-              <div key={comment._id} className="comment_wrapper">
-                <h3>{comment.comment}</h3>
+        <section>
 
-                <p>{comment.owner.userName}</p>
-                <p>{comment.creat_at}</p>
+            <div className="container">
 
-                {comment.owner === userId ? (
-                  <DeleteComment id={comment._id} />
-                ) : null}
-                <hr />
-              </div>
-            ))}
-        </div>
-      </section>
+                {comments &&
+                    comments.map((comment) =>
+                        comment.fromPost._id === id ? (
+                            <div key={comment._id}>
+                                <p>{comment.comment}</p>
+                                <p>{comment.userName}</p>
+                                <p>{comment.creat_at}</p>
+                                {comment.owner._id === userId && <DeleteComment id={comment._id} />}
+                                <hr/>
+                            </div>
+                        ) : null
+                    )}
+
+
+            </div>
+
+        </section>
     </>
   );
 };

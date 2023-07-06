@@ -34,11 +34,11 @@ const EditPage = () => {
 
         }
         else{
-            axios.post(`http://localhost:5000/addNewQuestion/`,{
+            axios.post(`http://localhost:5000/addNewQuestion`,{
                 title: title,
                 desc: desc,
                 userId: userId,
-                userName : userName
+
             })
                 .then(
                         navigate(`/`)

@@ -6,7 +6,6 @@ import Header from "./Header";
 import '../styles/startPage.css'
 import {Link} from "react-router-dom";
 import '../styles/all.css'
-import Footer from "./Footer";
 
 
 
@@ -23,7 +22,7 @@ const StartPage = () => {
             .catch(err => {
                 console.log(err)
             })
-    }, [])
+    }, [posts])
 
     return (
         <>
@@ -33,9 +32,12 @@ const StartPage = () => {
             </div>
          <section className={'posts_section'}>
             <div className="container">
-                <div className="add">
-                    <i className="fa-solid fa-plus fa-beat fa-2xl"></i>Add Question
+
+                 <Link to={'/questionPage'}>
+                     <div className="add">
+                         <i className="fa-solid fa-plus fa-beat fa-2xl"></i>Add Question
                 </div>
+                 </Link>
 
                 <div className="posts_main_wrapper">
                     {posts && posts.map(post =>

@@ -4,6 +4,9 @@
 body,html {
     background-color: RGB(240, 242, 245);
 }
+a{
+    text-decoration: none;
+}
 /* Указываем box sizing */
 *,
 *::before,

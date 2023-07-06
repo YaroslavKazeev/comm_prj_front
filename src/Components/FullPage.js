@@ -88,10 +88,10 @@ const FullPage = () => {
             <Header />
             <section className={'post_section'}>
                 <div className="container">
-                    <div className="post_wrapper">
-                        <h3 className={'post_title'}>Title :{title}</h3>
+                    <div className="post_fullpage_wrapper">
+                        <h3 className={'post_fullpage_title'}>Title :{title}</h3>
                         <hr/>
-                        <p className={'post_desc'}>Desc : {desc}</p>
+                        <p className={'post_fullpage_desc'}>Desc : {desc}</p>
                         <p>Time: {time}</p>
                     </div>
                     {userId === owner ? (

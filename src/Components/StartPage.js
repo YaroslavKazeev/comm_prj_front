@@ -5,7 +5,9 @@ import './Header'
 import Header from "./Header";
 import '../styles/startPage.css'
 import {Link} from "react-router-dom";
+import '../styles/all.css'
 import Footer from "./Footer";
+
 
 
 const StartPage = () => {
@@ -26,20 +28,32 @@ const StartPage = () => {
     return (
         <>
             <Header />
+            <div className="add_question">
+
+            </div>
          <section className={'posts_section'}>
             <div className="container">
+                <div className="add">
+                    <i className="fa-solid fa-plus fa-beat fa-2xl"></i>Add Question
+                </div>
+
                 <div className="posts_main_wrapper">
                     {posts && posts.map(post =>
                         <div key={post._id} className="post_wrapper">
                             <div className="post_owner post_time">
+
+
                                 <h4>{post.owner.userName}</h4>
                                 <p>{post.creat_at}</p>
+
                             </div>
-                            <h3 className={'post_title'}>Title: {post.title}</h3>
+                            <img src="https://traveller-eu.ru/sites/default/files/styles/main_img/public/02-Zaanse-Schans-Holland-Netherlands-travel-photography-800x533.webp?itok=OJJMDEJu" alt=""/>
+                            <Link to={`/fullPage/${post._id}`}> <h3 className={'post_title'}>Title: {post.title}</h3></Link>
                             <p className={'posts_desc'}>Desc: {post.desc}</p>
+                            <hr className={'split'}/>
 
 
-                                <Link to={`/fullPage/${post._id}`}>See more</Link>
+                                <Link  className={'comment'} to={`/fullPage/${post._id}`}><i className="fa-solid fa-comment fa-xl "></i>comment</Link>
 
 
                         </div>

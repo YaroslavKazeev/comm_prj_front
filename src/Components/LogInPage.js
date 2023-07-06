@@ -35,9 +35,6 @@ const LogInPage = () => {
                 password: userPassword
             })
                 .then(res => {
-
-
-
                     if(res.data.token){
                        localStorage.setItem('userName', res.data.user.userName);
                         localStorage.setItem('userEmail', res.data.user.email);

@@ -27,10 +27,10 @@ const EditPage = () => {
         setErr('')
         if (title === '' || desc === ''){
             setErr("Title and Description should not be empty")
-        }else if (title.length<2 || title.length>20 ){
-            setErr("Title min length 2, max length 20")
-        }else if(desc.length<6 || desc.length>200){
-            setErr("Description min length 6, max length 200")
+        }else if (title.length<2 || title.length>60 ){
+            setErr("Title min length 2, max length 60")
+        }else if(desc.length<6 || desc.length>500){
+            setErr("Description min length 6, max length 500")
 
         }
         else{

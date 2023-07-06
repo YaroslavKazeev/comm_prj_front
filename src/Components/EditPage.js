@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import axios from "axios";
 import { useParams, useNavigate} from "react-router-dom";
 import Header from "./Header";
-import '../styles/fullPage.css'
+import '../styles/editPage.css'
 
 
 const EditPage = () => {
@@ -68,14 +68,8 @@ const EditPage = () => {
         <Header />
         <section className={'post_section'}>
             <div className="container">
-                <div className="post_wrapper">
-                    <h2>Content Editing</h2>
-                    <h3>Title :{title}</h3>
-                    <hr/>
-                    <p>Desc : {desc}</p>
-                    <p>Time: {time}</p>
-                </div>
-
+                <h2>Content Editing</h2>
+                
                 <form onSubmit={editSubmit} className="form_edit">
                     <input type="text" name="title" value={title} onChange={titleChange}/>
                     <br/>

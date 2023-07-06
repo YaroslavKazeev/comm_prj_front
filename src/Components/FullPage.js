@@ -18,7 +18,7 @@ const FullPage = () => {
     const userId = localStorage.getItem("userId")
     const userName = localStorage.getItem('userName')
     const navigate = useNavigate();
-    console.log(userName)
+
 
 
     let {id} = useParams();
@@ -26,7 +26,7 @@ const FullPage = () => {
     useEffect(() =>{
         axios.get(`http://localhost:5000/fullPage/${id}`)
             .then(result =>{
-                console.log(result)
+
 
 
                 let res= result.data.posts

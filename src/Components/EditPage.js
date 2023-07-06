@@ -61,21 +61,21 @@ const EditPage = () => {
         <>
         <Header />
         <section className={'post_section'}>
-            <div className="container">
+        <div className="container">
                 <h2>Edit Content</h2>
                 
                 <form onSubmit={editSubmit} className="form_edit">
-                    <p>Title:</p>
+                    <p className='post_title'>Title:</p>
                     <input type="text" name="title" value={title} onChange={titleChange}/>
                     <br/>
-                    <p>Description:</p>
+                    <p className='post_title'>Description:</p>
                     <textarea name="desc" cols="40" rows="10" value={desc} onChange={descChange}></textarea>
                     <br/>
-                    <button onClick={editSubmit}>Save</button>
+                    <button onClick={editSubmit} className='edit_delete_comment_button'>Save</button>
                 </form>
 
                 {err ? <h5 className="error">{err}</h5> : null }
-            </div>
+        </div>
         </section>
         </>
     )

@@ -33,7 +33,10 @@ const StartPage = () => {
             </div>
          <section className={'posts_section'}>
             <div className="container">
-                <i className="fa-sharp fa-light fa-plus fa-2xl addquestion"></i> Add Question
+                <div className="add">
+                    <i className="fa-solid fa-plus fa-beat fa-2xl"></i>Add Question
+                </div>
+
                 <div className="posts_main_wrapper">
                     {posts && posts.map(post =>
                         <div key={post._id} className="post_wrapper">

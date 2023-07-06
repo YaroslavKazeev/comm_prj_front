@@ -27,6 +27,9 @@
     color: black;
 
 }
+.userName{
+    font-size: 20px;
+}
 .logo_header:hover{
     color: rgba(192, 107, 0, 0.75);
 }

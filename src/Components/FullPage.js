@@ -14,9 +14,10 @@ const FullPage = () => {
     const [newComment, setNewComment] = useState('');
     const [err, setErr] = useState('');
     const [comments,setComments]= useState([])
+
     const userId = localStorage.getItem("userId")
     const userName = localStorage.getItem('userName')
-    console.log(userName)
+
 
 
     let {id} = useParams();
@@ -36,6 +37,7 @@ const FullPage = () => {
                 setDesc(res.desc)
                 setTime(res.creat_at)
                 setComments(comments)
+
             })
             .catch(err =>{
                 console.log(err)
@@ -97,24 +99,21 @@ const FullPage = () => {
         </section>
             <section>
                 <div className="container">
-                    {comments && comments.map(comment=>
-                    <div key={comment._id} className="comment_wrapper">
-                        <h3>{comment.comment}</h3>
-
-                        <p>{comment.owner.userName}</p>
-                        <p>{comment.creat_at}</p>
-                        <DeleteComment id={comment._id} />
-                        <hr/>
-
-
-                    </div>
-
-                    )}
-
-
-
+                    {comments &&
+                        comments.map((comment) =>
+                            comment.fromPost._id === id ? (
+                                <div key={comment._id} className="comment_wrapper">
+                                    <h3>{comment.comment}</h3>
+                                    <p>{comment.owner.userName}</p>
+                                    <p>{comment.created_at}</p>
+                                    <DeleteComment id={comment._id} />
+                                    <hr />
+                                </div>
+                            ) : null
+                        )}
                 </div>
             </section>
+
         </>
     )
 }

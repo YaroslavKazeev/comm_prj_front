@@ -4,6 +4,7 @@ import { useParams, useNavigate, Link } from "react-router-dom";
 import Header from "./Header";
 import '../styles/fullPage.css'
 import DeleteComment from "./DeleteComment";
+import {useNavigation} from "react-router-dom";
 
 
 const FullPage = () => {
@@ -16,6 +17,7 @@ const FullPage = () => {
     const [comments,setComments]= useState([])
     const userId = localStorage.getItem("userId")
     const userName = localStorage.getItem('userName')
+    const navigate = useNavigate();
     console.log(userName)
 
 
@@ -24,7 +26,7 @@ const FullPage = () => {
     useEffect(() =>{
         axios.get(`http://localhost:5000/fullPage/${id}`)
             .then(result =>{
-
+                console.log(result)
 
 
                 let res= result.data.posts
@@ -33,6 +35,7 @@ const FullPage = () => {
 
 
                 setTitle(res.title)
+                setOwner(res.owner)
                 setDesc(res.desc)
                 setTime(res.creat_at)
                 setComments(comments)
@@ -67,6 +70,18 @@ const FullPage = () => {
                 })
         }
     }
+    const deleteQuestion = () =>{
+
+
+        axios.post(`http://localhost:5000/delete_question/${id}`)
+            .then(result =>{
+                navigate(result.data)
+            })
+            .catch(err =>{
+                console.log(err)
+            })
+    }
+
 
     return(
         <>            
@@ -79,8 +94,12 @@ const FullPage = () => {
                     <p className={'post_desc'}>Desc : {desc}</p>
                     <p>Time: {time}</p>
                 </div>
-                <Link to={`/edit_page/${id}`}>Edit</Link>
-                <button className="full_edit_btn">Delete</button>
+                {userId === owner ? (
+                    <>
+                        <Link to={`/edit_page/${id}`}>Edit</Link>
+                        <button onClick={deleteQuestion} className="button">Delete</button>
+                    </>
+                ) : null}
 
             </div>
         </section>

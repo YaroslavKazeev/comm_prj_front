@@ -3,27 +3,40 @@
 }
 .post_wrapper {
 
-   margin-top: 20px;
+
     display: flex;
     flex-direction: column;
     gap: 30px;
     background-color: white;
     border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.7);
     padding: 10px;
+    transition: transform 0.6s ease;
+    max-width: 50%;
+    margin: auto;
+}
+.post_wrapper:hover{
+
 }
 .post_title {
 
-    transition: transform 0.6s ease;
+font-size: 24px;
+}
+
+
+.post_title:hover{
+    color: rgba(192,107,0,0.75);
 }
 .post_desc {
     text-align: left;
-    font-size: 18px;
+    font-size: 20px;
+
 }
 .split{
-    margin-top: 20px;
-    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-    width: 100%;
+
+    box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+    width: 95%;
+    margin-bottom: -20px;
 }
 .post_owner {
     align-self: flex-start;
@@ -33,4 +46,31 @@
 }
 .post_owner p {
     font-size: 12px;
+}
+a:visited{
+    color: black;
+}
+.comment{
+    color: #b6bdc9;
+    align-self: flex-end;
+    margin-right: 50px;
+
+
+}
+.fa-comment{
+    margin-right: 15px;
+}
+.comment:visited{
+    color: #b6bdc9;
+}
+.comment:hover{
+    color: rgba(192,107,0,0.75);
+}
+img{
+    max-width: 80%;
+   margin: auto;
+    border-radius: 5px;
+}
+.addquestion{
+    margin-bottom: 50px;
 }

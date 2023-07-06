@@ -43,7 +43,10 @@ const LogInPage = () => {
                         localStorage.setItem('userEmail', res.data.user.email);
                         localStorage.setItem('userId', res.data.user.id);
                        Cookie.set('userToken', res.data.token)
+
                        navigate('/')
+                        window.location.reload()
+
                    }else {
                        setErr(res.data.error)
                    }

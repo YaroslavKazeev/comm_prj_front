@@ -9,7 +9,8 @@ const EditPage = () => {
     const navigate = useNavigate();
     const [title, setTitle]= useState([]);
     const [desc, setDesc] = useState([])
-    const [time, setTime] = useState([])
+    const userId = localStorage.getItem("userId")
+    const userName = localStorage.getItem('userName')
     const [err, setErr] = useState('');
 
 
@@ -20,10 +21,6 @@ const EditPage = () => {
     const descChange = (e) =>{
         setErr('')
         setDesc(e.target.value)
-    }
-    const timeChange = (e) =>{
-        setErr('')
-        setTime(e.target.value)
     }
     const editSubmit = (e) =>{
         e.preventDefault()
@@ -40,7 +37,8 @@ const EditPage = () => {
             axios.post(`http://localhost:5000/addNewQuestion/`,{
                 title: title,
                 desc: desc,
-                time: time
+                userId: userId,
+                userName : userName
             })
                 .then(
                         navigate(`/`)

@@ -35,17 +35,15 @@ const LogInPage = () => {
                 password: userPassword
             })
                 .then(res => {
-
-
-
-                    if(res.data){
+                    if(res.data.token){
                        localStorage.setItem('userName', res.data.user.userName);
                         localStorage.setItem('userEmail', res.data.user.email);
                         localStorage.setItem('userId', res.data.user.id);
                        Cookie.set('userToken', res.data.token)
+                        window.location.reload()
 
                        navigate('/')
-                        window.location.reload()
+
 
                    }else {
                        setErr(res.data.error)

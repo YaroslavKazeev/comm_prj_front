@@ -75,17 +75,18 @@ console.log(res)
 
   return (
     <>
-      {/* <Header /> */}
-      <section className={"post_section"}>
+      <Header />
+      <section className="posts_section">
         <div className="container">
           <div className="post_fullpage_wrapper">
-            <h3 className={"post_fullpage_title"}>Title :{title}</h3>
+            <h3 className="post_fullpage_title">Title :{title}</h3>
             <hr />
-            <p className={"post_fullpage_desc"}>Desc : {desc}</p>
+            <p className="post_fullpage_desc">Desc : {desc}</p>
             <p>Time: {time}</p>
           </div>
           {userId === owner ? (
             <>
+            <p>Hey!</p>
               <Link to={`/edit_page/${id}`}><button className='edit_delete_comment_button'>
                 Edit
               </button></Link>
@@ -97,7 +98,7 @@ console.log(res)
           ) : null}
         </div>
       </section>
-      <section className={"addComment_section"}>
+      <section className="addComment_section">
         <div className="container">
           <form onSubmit={commentSubmit}>
             <input name="txt" onChange={commentChange}></input>

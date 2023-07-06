@@ -46,7 +46,7 @@ const EditPage = () => {
   return (
     <>
       <Header />
-      <section className={"post_section"}>
+      <section className="posts_section">
         <div className="container">
           <h2>Add Content</h2>
 

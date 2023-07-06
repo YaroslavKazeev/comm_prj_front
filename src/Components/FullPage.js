@@ -80,7 +80,7 @@ const FullPage = () => {
                     <p>Time: {time}</p>
                 </div>
                 <Link to={`/edit_page/${id}`}>Edit</Link>
-                <button class="full_edit_btn">Delete</button>
+                <button className="full_edit_btn">Delete</button>
 
             </div>
         </section>

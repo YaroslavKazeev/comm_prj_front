@@ -23,10 +23,12 @@ const FullPage = () => {
 
     let {id} = useParams();
 
+
+
     useEffect(() =>{
         axios.get(`http://localhost:5000/fullPage/${id}`)
             .then(result =>{
-
+                console.log(result)
 
 
                 let res= result.data.posts
@@ -114,28 +116,36 @@ const FullPage = () => {
                     </form>
                 </div>
             </section>
+
             <section>
+
                 <div className="container">
-                    {comments && comments.map(comment=>
-                        <div key={comment._id} className="comment_wrapper">
-                            <h3>{comment.comment}</h3>
 
-                            <p>{comment.owner.userName}</p>
-                            <p>{comment.creat_at}</p>
+                    {comments &&
+                        comments.map((comment) =>
+                            comment.fromPost._id === id ? (
+                                <div key={comment._id}>
+                                    <p>{comment.comment}</p>
+                                    <p>{comment.userName}</p>
+                                    <p>{comment.creat_at}</p>
+                                    {comment.owner._id === userId && <DeleteComment id={comment._id} />}
+                                </div>
+                            ) : null
+                        )}
 
-                            {comment.owner=== userId ?
-                               <DeleteComment id={comment._id} />
-                            : null
-
-                            }
-                            <hr/>
-
-
-                        </div>
-                    )}
 
                 </div>
+
             </section>
+
+
+
+
+
+
+
+
+
         </>
     )
 }

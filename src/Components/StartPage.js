@@ -6,13 +6,15 @@ import Header from "./Header";
 import '../styles/startPage.css'
 import {Link} from "react-router-dom";
 import Footer from "./Footer";
+
+
 const StartPage = () => {
     const [posts, setPosts] = useState([])
 
     useEffect(() => {
         axios.get(`http://localhost:5000/`)
             .then(result => {
-                console.log(result)
+
 
                 setPosts(result.data.allPosts)
             })
@@ -45,7 +47,8 @@ const StartPage = () => {
                 </div>
             </div>
          </section>
-        
+
+
         </>
 
 

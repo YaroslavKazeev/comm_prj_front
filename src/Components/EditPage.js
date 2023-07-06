@@ -34,12 +34,12 @@ const EditPage = () => {
 
         }
         else{
-            axios.post(`/editPost/${id}`,{
+            axios.post(`http://localhost:5000/editPost/${id}`,{
                 title: title,
                 desc: desc
             })
                 .then(
-                        navigate(`/fullPage/${id}`)
+                        // navigate(`/`)
                 )
                 .catch(err =>{
                     console.log(err)
@@ -77,9 +77,9 @@ const EditPage = () => {
                 </div>
 
                 <form onSubmit={editSubmit} className="form_edit">
-                    <input type="text" name="title" placeholder={title} onChange={titleChange}/>
+                    <input type="text" name="title" value={title} onChange={titleChange}/>
                     <br/>
-                    <textarea name="desc" id="" cols="40" rows="10" placeholder={desc} onChange={descChange}></textarea>
+                    <textarea name="desc" cols="40" rows="10" value={desc} onChange={descChange}></textarea>
                     <br/>
                     <button onClick={editSubmit}>Save</button>
                 </form>

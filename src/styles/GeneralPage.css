@@ -38,7 +38,11 @@ font-size: 24px;
 .edit_delete_comment_button{
     border-radius: 5px;
     margin-top: 20px;
-    background-color: rgb(0,113,227) ;
+    background-color: rgb(0,113,227);
     padding: 4px;
     box-shadow: 0 0 5px 0;
+}
+
+.edit_delete_comment_button:hover{
+    background-color: rgb(63, 145, 226);
 }

@@ -37,7 +37,6 @@ const EditPage = () => {
             axios.post(`http://localhost:5000/addNewQuestion/`,{
                 title: title,
                 desc: desc,
-                time: time,
                 userId: userId,
                 userName : userName
             })

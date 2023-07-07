@@ -115,7 +115,7 @@ console.log(res)
 
                 {comments &&
                     comments.map((comment) =>
-                        comment.fromPost._id === id ? (
+                    comment.fromPost && comment.fromPost._id === id ?  (
                             <div key={comment._id}>
                                 <p>{comment.comment}</p>
                                 <p>{comment.userName}</p>
